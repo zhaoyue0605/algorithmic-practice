@@ -8,9 +8,9 @@ package com.datastructure.linkedlist;
  */
 public class MyLinkedList {
 
-    MyLinkedListNode headNode = null;
+    private MyLinkedListNode headNode = null;
 
-    int length;
+    private int length;
 
     public void add(int data) {
         MyLinkedListNode node = new MyLinkedListNode(data);
@@ -24,6 +24,25 @@ public class MyLinkedList {
             temp.next = node;
         }
         length += 1;
+    }
+
+    public int length() {
+        return this.length;
+    }
+
+    public MyLinkedListNode findByIndex(int index) {
+        MyLinkedListNode temp = headNode;
+        for (int currentIndex = 1; currentIndex <= length; currentIndex ++) {
+            if (currentIndex == index) {
+                return temp;
+            }
+            temp = temp.next;
+        }
+        return null;
+    }
+
+    public int findIndexByElement(int element) {
+        return 0;
     }
 
 }
