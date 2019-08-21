@@ -20,10 +20,13 @@ public class MyLinkedListTest {
         MyLinkedList linkedList = new MyLinkedList();
         Assert.assertEquals("初始化长度应为0", 0, linkedList.length());
         linkedList.add(5);
-        Assert.assertEquals("添加一个节点后长度应为1", 1, linkedList.length());
+        linkedList.add(6);
+        Assert.assertEquals("添加两个节点后长度应为2", 2, linkedList.length());
         MyLinkedListNode headNode = linkedList.findByIndex(1);
         Assert.assertEquals("根据index获取第一个元素数据应为5", 5, headNode.getData());
-        Assert.assertEquals("根据index获取第一个元素数据下一节点指针应为null", null, headNode.getNext());
+        Assert.assertEquals("根据index获取最后一个元素数据下一节点指针应为null", null, headNode.getNext().getNext());
+        int index = linkedList.findIndexByElement(6);
+        Assert.assertEquals("根据数据获取index位置应该为2", 2, index);
         logger.info("测试通过");
     }
 
