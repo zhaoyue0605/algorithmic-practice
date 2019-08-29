@@ -8,7 +8,7 @@ package com.datastructure.linkedlist;
  */
 public class MyLinkedList {
 
-    private MyLinkedListNode headNode = null;
+    private MyLinkedListNode headNode;
 
     /**
      * 链表长度最短为1
@@ -26,7 +26,7 @@ public class MyLinkedList {
             }
             temp.next = node;
         }
-        length += 1;
+        length ++;
     }
 
     public int length() {
@@ -38,7 +38,7 @@ public class MyLinkedList {
             throw new RuntimeException("index不合法，需大于等于1");
         }
         if (length < index) {
-            throw new RuntimeException("index不合法，需小于链表最大长度" + length);
+            return null;
         }
         MyLinkedListNode temp = headNode;
         for (int currentIndex = 1; currentIndex <= length; currentIndex ++) {
@@ -53,12 +53,29 @@ public class MyLinkedList {
     public int findIndexByElement(int element) {
         MyLinkedListNode temp = headNode;
         for (int currentIndex = 1; currentIndex <= length; currentIndex ++) {
-            if (temp.getData() == element) {
+            if (temp.data == element) {
                 return currentIndex;
             }
             temp = temp.next;
         }
-        return 0;
+        return -1;
+    }
+
+    public int deleteByIndex(int index) {
+        if (1 > index) {
+            throw new RuntimeException("index不合法，需大于等于1");
+        }
+        if (1 == index) {
+            headNode = headNode.next;
+        } else {
+            MyLinkedListNode preNode = findByIndex(index - 1);
+            if (null == preNode) {
+                return 1;
+            }
+            preNode.next = preNode.next.next;
+        }
+        length --;
+        return 1;
     }
 
 }

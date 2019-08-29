@@ -11,7 +11,7 @@ public class MyLinkedListNode {
     /**
      * 节点数据
      */
-    private int data;
+    int data;
 
     /**
      * 下一节点指针
@@ -20,16 +20,6 @@ public class MyLinkedListNode {
 
     MyLinkedListNode(int data) {
         this.data = data;
-        //单向链表，最后一个节点永远是null
-        this.next = null;
-    }
-
-    public int getData() {
-        return this.data;
-    }
-
-    public MyLinkedListNode getNext() {
-        return this.next;
     }
 
 }
