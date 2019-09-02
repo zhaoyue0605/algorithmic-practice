@@ -70,9 +70,35 @@ public class MyLinkedList {
         } else {
             MyLinkedListNode preNode = findByIndex(index - 1);
             if (null == preNode) {
-                return 1;
+                return 0;
             }
-            preNode.next = preNode.next.next;
+            if (null == preNode.next.next) {
+                preNode.next = null;
+            } else {
+                preNode.next = preNode.next.next;
+            }
+        }
+        length --;
+        return 1;
+    }
+
+    public int deleteByElement(int element) {
+        MyLinkedListNode tmp = headNode;
+        for (int currentIndex = 1; currentIndex <= length; currentIndex ++) {
+            if (headNode.data == element && currentIndex == 1) {
+                headNode = headNode.next;
+                break;
+            } else if (tmp.next.data == element && null == tmp.next.next) {
+                tmp.next = null;
+                break;
+            } else if (tmp.next.data == element){
+                tmp.next = tmp.next.next;
+                break;
+            }
+            tmp = tmp.next;
+            if (null == tmp.next) {
+                return 0;
+            }
         }
         length --;
         return 1;

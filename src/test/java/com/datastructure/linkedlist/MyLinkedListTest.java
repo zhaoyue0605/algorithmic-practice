@@ -52,6 +52,11 @@ public class MyLinkedListTest {
         linkedList.deleteByIndex(1);
         Assert.assertEquals("删除一个节点后长度应为2", 2, linkedList.length());
         Assert.assertEquals("删除第一个节点后第一个节点数据应为2", 2, linkedList.findByIndex(1).data);
+        //根据元素删除节点
+        linkedList.deleteByElement(3);
+        Assert.assertEquals("删除一个节点后长度应为1", 1, linkedList.length());
+        Assert.assertEquals("删除第一个节点后第一个节点数据应为2", 2, linkedList.findByIndex(1).data);
+
         logger.info("测试通过");
     }
 
