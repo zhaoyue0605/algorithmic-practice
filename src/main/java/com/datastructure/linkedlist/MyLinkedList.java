@@ -15,6 +15,10 @@ public class MyLinkedList {
      */
     private int length;
 
+    /**
+     * 增加节点操作
+     * @param data
+     */
     public void add(int data) {
         MyLinkedListNode node = new MyLinkedListNode(data);
         if (null == headNode) {
@@ -29,10 +33,19 @@ public class MyLinkedList {
         length ++;
     }
 
+    /**
+     * 返回链表长度
+     * @return
+     */
     public int length() {
         return this.length;
     }
 
+    /**
+     * 根据位置查找元素
+     * @param index
+     * @return null表示该位置没有数据
+     */
     public MyLinkedListNode findByIndex(int index) {
         if (1 > index) {
             throw new RuntimeException("index不合法，需大于等于1");
@@ -50,6 +63,11 @@ public class MyLinkedList {
         return null;
     }
 
+    /**
+     * 根据元素查找位置
+     * @param element
+     * @return -1表示没有该数据不存在
+     */
     public int findIndexByElement(int element) {
         MyLinkedListNode temp = headNode;
         for (int currentIndex = 1; currentIndex <= length; currentIndex ++) {
@@ -61,6 +79,11 @@ public class MyLinkedList {
         return -1;
     }
 
+    /**
+     * 根据位置删除节点
+     * @param index
+     * @return 0表示没有节点删除 1表示删除成功
+     */
     public int deleteByIndex(int index) {
         if (1 > index) {
             throw new RuntimeException("index不合法，需大于等于1");
@@ -82,6 +105,11 @@ public class MyLinkedList {
         return 1;
     }
 
+    /**
+     * 根据元素删除节点
+     * @param element
+     * @return 0表示没有节点删除 1表示删除成功
+     */
     public int deleteByElement(int element) {
         MyLinkedListNode tmp = headNode;
         for (int currentIndex = 1; currentIndex <= length; currentIndex ++) {
@@ -102,6 +130,21 @@ public class MyLinkedList {
         }
         length --;
         return 1;
+    }
+
+    /**
+     * 链表反转操作
+     */
+    public void reverse() {
+        MyLinkedListNode currentTemp = headNode;
+        MyLinkedListNode reverseTemp = null;
+        while (currentTemp != null) {
+            MyLinkedListNode next = currentTemp.next;
+            currentTemp.next = reverseTemp;
+            reverseTemp = currentTemp;
+            currentTemp = next;
+        }
+        headNode = reverseTemp;
     }
 
 }

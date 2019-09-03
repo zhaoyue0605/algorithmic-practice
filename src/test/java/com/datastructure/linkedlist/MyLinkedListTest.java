@@ -32,6 +32,9 @@ public class MyLinkedListTest {
         myLinkedListNo2.add(6);
     }
 
+    /**
+     * 链表增删改基础操作测试
+     */
     @Test
     public void linkedListBaseOperateTest() {
         MyLinkedList linkedList = new MyLinkedList();
@@ -56,7 +59,22 @@ public class MyLinkedListTest {
         linkedList.deleteByElement(3);
         Assert.assertEquals("删除一个节点后长度应为1", 1, linkedList.length());
         Assert.assertEquals("删除第一个节点后第一个节点数据应为2", 2, linkedList.findByIndex(1).data);
+        logger.info("测试通过");
+    }
 
+    /**
+     * 链表反转测试
+     */
+    @Test
+    public void linkedListReverseTest() {
+        myLinkedListNo1.reverse();
+        Assert.assertEquals("反转后第一个节点后数据应为3", 3, myLinkedListNo1.findByIndex(1).data);
+        Assert.assertEquals("反转后第一个节点后数据应为2", 2, myLinkedListNo1.findByIndex(2).data);
+        Assert.assertEquals("反转后第一个节点后数据应为1", 1, myLinkedListNo1.findByIndex(3).data);
+        myLinkedListNo1.reverse();
+        Assert.assertEquals("二次反转后第一个节点后数据应为1", 1, myLinkedListNo1.findByIndex(1).data);
+        Assert.assertEquals("二次反转后第一个节点后数据应为2", 2, myLinkedListNo1.findByIndex(2).data);
+        Assert.assertEquals("二次反转后第一个节点后数据应为3", 3, myLinkedListNo1.findByIndex(3).data);
         logger.info("测试通过");
     }
 
